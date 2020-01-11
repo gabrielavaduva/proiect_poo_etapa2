@@ -1,0 +1,11 @@
+Starting audit...
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/abilities/AbilityVisitor.java:3: Using the '.*' form of import should be avoided - players.*. [AvoidStarImport]
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/abilities/Abilities.java:3: Using the '.*' form of import should be avoided - players.*. [AvoidStarImport]
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/abilities/Abilities.java:5: Using the '.*' form of import should be avoided - common.Constants.*. [AvoidStarImport]
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/common/Constants.java:3:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/main/Main.java:3: Using the '.*' form of import should be avoided - players.*. [AvoidStarImport]
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/main/Main.java:12: Class Main should be declared as final. [FinalClass]
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/main/Main.java:16:29: Parameter args should be final. [FinalParameters]
+[ERROR] /home/gabriela/IdeaProjects/com.proiect1/src/main/GameInput.java:17:12: More than 7 parameters (found 9). [ParameterNumber]
+Audit done.
+Checkstyle ends with 8 errors.
