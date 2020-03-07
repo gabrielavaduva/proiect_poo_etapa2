@@ -20,7 +20,10 @@ public class Main {
         int n, m;
         n = gameInput.getnDimension();
         m = gameInput.getmDimension();
-        Land map = new Land(n, m);
+        Land map = Land.getInstance();
+        map.setDimensions(n, m);
+
+        PlayerFactory playerFactory = PlayerFactory.getInstance();
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -45,20 +48,7 @@ public class Main {
             int l = gameInput.getxPositions().get(i);
             int c = gameInput.getyPositions().get(i);
             String land = map.getCells().get(l).get(l).getTypeOfLand();
-            switch (s) {
-                case "W":
-                    players.add(new Wizard(i, l, c, land));
-                    break;
-                case "R":
-                    players.add(new Rogue(i, l, c, land));
-                    break;
-                case "P":
-                    players.add(new Pyromancer(i, l, c, land));
-                    break;
-                default:
-                    players.add(new Knight(i, l, c, land));
-                    break;
-            }
+            players.add(playerFactory.createPlayer(s, i, l, c, land));
         }
 
         int rounds = gameInput.getRounds();

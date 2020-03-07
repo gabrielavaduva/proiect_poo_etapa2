@@ -6,10 +6,6 @@ import land.Land;
 
 import static java.lang.Integer.max;
 
-//import static java.lang.Float.max;
-
-//import static sun.swing.MenuItemLayoutHelper.max;
-
 public abstract class Player {
     private int id;
     private int xPos, yPos;
@@ -27,8 +23,6 @@ public abstract class Player {
     private boolean slammed;
     private int noSlams;
 
-//    private boolean onMotherLand = false;
-//    private boolean leveledUp;
     private boolean dead;
     private int hp;
     private int xp;
@@ -110,7 +104,7 @@ public abstract class Player {
     }
 
     /**
-     * This method updates the x and y coordonates.
+     * This method updates the x and y coordinates.
      */
     public void move(final char move, final Land l) {
         if (!isSlammed() && !isParalysed()) {
@@ -119,8 +113,6 @@ public abstract class Player {
             } else if (move == 'D') {
                 this.setxPos(this.getxPos() + 1);
             } else if (move == 'R') {
-                // creste coloana
-//                System.out.println("creste coloana" + this.getName() + this.getId());
                 this.setyPos(this.getyPos() + 1);
             } else if (move == 'L') {
                 this.setyPos(this.getyPos() - 1);

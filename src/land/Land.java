@@ -10,15 +10,29 @@ import static common.Constants.NO_PLAYER;
 public class Land {
     private int dimensionM, dimensionN;
     private List<List<Cell>> cells = new ArrayList<>();
+    private static Land instance;
 
-    public Land(final int dimensionN, final int dimensionM) {
-//        map = new ArrayList<List<Cell>>(dimensionN);
+    private Land(){ }
+
+    /**
+     * getter for instance
+     */
+
+    public static Land getInstance(){
+        if (instance == null) {
+            instance = new Land();
+        }
+        return instance;
+    }
+
+    public void setDimensions(final int dimensionN, final int dimensionM) {
         this.dimensionM = dimensionM;
         this.dimensionN = dimensionN;
         for (int i = 0; i < dimensionN; i++) {
             cells.add(new ArrayList<>());
         }
     }
+
 
     /**
      * Puts players on the map.
