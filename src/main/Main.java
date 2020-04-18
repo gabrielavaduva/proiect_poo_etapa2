@@ -74,6 +74,7 @@ public class Main {
                 if (map.getCells().get(x).get(y).isHavingABattle()) {
                     int id1 = map.getCells().get(x).get(y).getIdPlayer1();
                     int id2 = map.getCells().get(x).get(y).getIdPlayer2();
+
                     players.get(id1).fight(a, players.get(id2));
                     players.get(id2).verifyIfStillAlive();
 
@@ -92,6 +93,8 @@ public class Main {
                         loser = id2;
                         somebodyDied = true;
                     }
+
+                    players.get(loser).notifyObserver(players.get(winner));
 
                     if (players.get(id1).isDead() && players.get(id2).isDead()) {
                         players.get(id1).calculateExperience(players.get(id2));

@@ -7,7 +7,7 @@ public class PlayerFactory {
 
     /**
      * Singleton, because we need only one Factory
-     * @return
+     * @return instance
      */
     public static PlayerFactory getInstance() {
         if (instance == null) {

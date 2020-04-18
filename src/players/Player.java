@@ -3,10 +3,15 @@ package players;
 import abilities.AbilityVisitor;
 import common.Constants;
 import land.Land;
+import magicians.MagicianObserver;
+import magicians.Observer;
+import magicians.Subject;
+
+import java.util.ArrayList;
 
 import static java.lang.Integer.max;
 
-public abstract class Player {
+public abstract class Player implements Subject {
     private int id;
     private int xPos, yPos;
     private String currentLand;
@@ -31,6 +36,8 @@ public abstract class Player {
     private int hpBonusLevel;
     private int specificHp;
 
+    public ArrayList<Observer> magicians = new ArrayList<>();
+
 
 
     Player(final int id, final int xPos, final int yPos, final String currentLand) {
@@ -48,6 +55,9 @@ public abstract class Player {
         this.noSlams = 0;
     }
 
+    /**
+     * Abstract methods for implementing double dispatch.
+     */
 
     public abstract void acceptFireblast(AbilityVisitor a, Pyromancer p);
     public abstract void acceptIgnite(AbilityVisitor a, Pyromancer p);
@@ -188,6 +198,20 @@ public abstract class Player {
             System.out.println(this.getName() + " " + this.getLevel() + " "
                     + this.getXp() + " " + this.getHp() + " " + this.getxPos() + " "
                     + this.getyPos());
+        }
+    }
+
+    public void register (Observer m){
+        magicians.add(m);
+    }
+    public void unregister(Observer m){
+        int mIndex = magicians.indexOf(m);
+        System.out.println("Magician number " + mIndex + " deleted.");
+        magicians.remove(mIndex);
+    }
+    public void notifyObserver(Player enemy) {
+        for (Observer mag : magicians) {
+            mag.update(this, enemy);
         }
     }
 
